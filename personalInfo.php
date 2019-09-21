@@ -44,10 +44,18 @@ tr:nth-child(even) {background-color: #f2f2f2}
       </tr>
       
       <?php
-//       include_once 'dbConnection.php';
-//       $conn=new dbConnection();
-        $conn=new mysqli("localhost", "root", "", "unionSqlInjection");
-        $result = $conn->query("SELECT * FROM user_details ");
+      session_start();
+       include_once 'dbConnection.php';
+       $conn=new dbConnection();
+//      $result = $conn->show($userid, $password);
+//        $conn=new mysqli("localhost", "root", "", "unionSqlInjection");
+       
+       
+                $userId =   $_SESSION['var1'];
+                $password =$_SESSION['var2']  ;
+               $result = $conn->show($userId, $password);
+
+       
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
    
